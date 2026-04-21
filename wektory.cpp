@@ -19,5 +19,9 @@ if(wpisana_ocena == 0){
 oceny.push_back(wpisana_ocena);
 }
 
+if(oceny.size() == 0){
+    cout << "Brak ocen do obliczenia Sredniej"
+}
+
 return 0;
 }
