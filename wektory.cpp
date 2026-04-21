@@ -20,7 +20,7 @@ oceny.push_back(wpisana_ocena);
 }
 
 if(oceny.size() == 0){
-    cout << "Brak ocen do obliczenia Sredniej"
+    cout << "Brak ocen do obliczenia Sredniej";
 }
 
 return 0;
