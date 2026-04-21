@@ -7,13 +7,39 @@ using namespace std;
 int main(){
     vector<string> Hero_equipment;
 
-    Hero_equipment.push_back("Miecz");
-    Hero_equipment.push_back("Tarcza");
-    Hero_equipment.push_back("Zloto");
+    Hero_equipment.push_back("Sword");
+    Hero_equipment.push_back("Shield");
+    Hero_equipment.push_back("Gold");
 
-    for(int i = 0; i < Hero_equipment.size(); i++){
-        cout << "Item: " << Hero_equipment[i] << endl;
+   for (string item : Hero_equipment) {
+    cout << "Items: " << item << endl;
     }
+    cout << endl;
+    cout << "The hero fell into a trap and lost his last item! " << endl;
+    cout << endl;
+
+    Hero_equipment.pop_back();
+
+    for (string item : Hero_equipment) {
+    cout << "Items: " << item << endl;
+    }
+    cout << endl;
+    cout << "The hero survived the trap and he found a potion in mystery chest" << endl;
+    cout << endl;
+
+    Hero_equipment.insert(Hero_equipment.begin(), "Potion");
+
+    cout << "Unfortunately, a moment later, the hero gets into a fight with a monster. During the fight, his sword brokes and it must be thrown away" << endl;
+    cout << endl;
+
+    Hero_equipment.erase(Hero_equipment.begin() + 1);
+     
+  for (string item : Hero_equipment) {
+    cout << "Items: " << item << endl;
+    }
+
+
+
 
     return 0;
 }
