@@ -22,6 +22,12 @@ oceny.push_back(wpisana_ocena);
 if(oceny.size() == 0){
     cout << "Brak ocen do obliczenia Sredniej";
 }
+else{
+    for(int i = 0; i < oceny.size(); i++){
+        suma = suma + oceny[i];
+    }
+    cout << "Srednia ocen wynosi: " << suma / oceny.size() << endl;
+}
 
 return 0;
 }
