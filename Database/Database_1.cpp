@@ -3,8 +3,8 @@
 using namespace std;
 //Adding 2 basic structures
 struct Entry{
-    char Name;
-    char Last_Name;
+    char Name[20];
+    char Last_Name[20];
     long Phone_Number;
 };
 
@@ -17,13 +17,37 @@ struct Base{
 void write_out_the_book(Base* base){
     if (base->current_number_of_records == 0){
         cout << "Base is empty!" << endl;
+        return;
     }
 
     for(int i = 0; i < base->current_number_of_records; i++){
-        cout << "Name: " << base->current_number_of_records[i].Name << endl;
-        cout << "Last Name: " << base->current_number_of_records[i].Last_Name << endl;
-        cout << "Phone number: " << base->current_number_of_records[i].Phone_Number << endl;
+        cout << "Name: " << base->array_of_records[i].Name << endl;
+        cout << "Last Name: " << base->array_of_records[i].Last_Name << endl;
+        cout << "Phone number: " << base->array_of_records[i].Phone_Number << endl;
     }
+}
+//Adding Entry
+int Add_Entry(Base* base, Entry* New_Entry){
+    if(base->current_number_of_records == base->maximum_number_of_records){
+        Entry* New_Array = new Entry[base->maximum_number_of_records + 10];
+        
+        if(New_Array == nullptr){
+            return -1;
+        }
+
+        for (int i = 0; i < base->current_number_of_records; i++){
+            New_Array[i] = base->array_of_records[i];
+        }
+
+        delete[] base->array_of_records;
+
+        base->array_of_records = New_Array;
+        base->maximum_number_of_records += 10;
+    }
+    base->array_of_records[base->current_number_of_records] = *New_Entry;
+    base->current_number_of_records++;
+
+    return 0;
 }
 
 int main(){
