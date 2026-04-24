@@ -50,6 +50,19 @@ int Add_Entry(Base* base, Entry* New_Entry){
     return 0;
 }
 
+//Deleting an entry
+void Delete_Entry(Base* base, int index){
+    if(index < 0 || index >= base->current_number_of_records){
+        return;
+    }
+
+    for(int i = index; i < base->current_number_of_records -1; i++){
+        base->array_of_records[i] = base->array_of_records[i + 1];
+    }
+
+    base->current_number_of_records--;
+}
+
 int main(){
 
 }
