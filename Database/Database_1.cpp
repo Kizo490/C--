@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-
+//Adding 2 basic structures
 struct Entry{
     char Name;
     char last_name;
