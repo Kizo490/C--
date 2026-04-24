@@ -62,7 +62,24 @@ void Delete_Entry(Base* base, int index){
 
     base->current_number_of_records--;
 }
-
+//Main function
 int main(){
+    Base Book;
+    Book.current_number_of_records = 0;
+    Book.maximum_number_of_records = 0;
+    Book.array_of_records = nullptr;
 
+    Entry entry1 = {"Max", "Bryant", 145092587};
+    Entry entry2 = {"Adam", "Maxwell", 498506391};
+    Entry entry3 = {"Philipe", "Zielniski", 752098652};
+
+    Add_Entry(&Book, &entry1);
+    Add_Entry(&Book, &entry2);
+    Add_Entry(&Book, &entry3);
+
+    write_out_the_book(&Book);
+
+    delete[] Book.array_of_records;
+
+    return 0;
 }
