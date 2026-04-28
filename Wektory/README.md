@@ -1,4 +1,58 @@
-# C++ Dynamic Memory & Vector Operations Toolkit
+# Vector_2.cpp
+## Modern C++ Vector Operations (Refactored)
+
+This project is a modernized version of a previous assignment ("Vector_1.cpp"). It refactors mathematical vector operations by migrating from raw, dynamically allocated arrays (`double*`) and manual memory management to the Standard Template Library (STL) `std::vector` container.
+
+## 🔄 The Refactoring Process: What Changed?
+In the previous iteration, vectors were represented as pointers to dynamically allocated memory. This required manual `new` and `delete[]` operations and passing the `size` of the array to every function. 
+
+This upgraded version utilizes **Modern C++ paradigms**:
+- **Zero Memory Leaks:** Complete removal of manual memory management. `std::vector` handles its own lifecycle.
+- **No Size Parameters:** The `size` parameter was dropped entirely, as `std::vector` knows its own dimensions.
+- **Performance Optimization:** Vectors are passed by reference (`&`) to prevent deep copying of large data structures.
+- **Const Correctness:** Functions that only read data enforce read-only access using `const` references (e.g., `const std::vector<double>&`).
+
+## 🛠️ Looping Strategies Demonstrated
+A core requirement of this project was to implement different types of C++ loops depending on the specific function's needs:
+
+1. **Range-based for loop (Read-Only):** Used in the `print_vector` function to cleanly iterate over elements without indices.
+2. **Iterator-based loop with `auto`:** Used in `scalar_product`. Demonstrates explicit container traversal using `begin()`, `end()`, and pointer dereferencing (`*it`).
+3. **Index-based for loop:** Used in `add_vectors` to safely read from two vectors simultaneously and append results to a new vector using `.push_back()`.
+4. **Range-based for loop (Mutable):** Used in the `normalize` function. Modifies the vector in-place by capturing elements by standard reference (`double&`).
+
+## 💻 Code Highlight: In-Place Normalization
+This function demonstrates calculating the magnitude of a vector and modifying the original object directly without creating a copy.
+
+```cpp
+void normalize(std::vector<double>& vec) {
+    double sum_of_squares = 0.0;
+    
+    // Read-only loop to calculate the sum of squares
+    for(const double& val : vec) {
+        sum_of_squares += val * val;
+    }
+    
+    double length = sqrt(sum_of_squares);
+
+    // Mutable loop to overwrite original values (In-Place modification)
+    for(double& val : vec) {
+        val = val / length;
+    }
+}
+```
+
+## 📋 Requirements
+- **Language:** C++11 or higher (requires support for range-based for loops and the `auto` keyword).
+- **Libraries:** `<iostream>`, `<vector>`, `<cmath>`
+
+## 📖 Lessons Learned
+Refactoring this code highlighted the massive advantages of Modern C++. By using STL containers and properly understanding references and iterators, the code became much shorter, significantly safer (no risk of memory leaks or dangling pointers), and more expressive.
+
+
+---
+
+# Vector_1.cpp
+## C++ Dynamic Memory & Vector Operations Toolkit
 
 A collection of academic C++ exercises focusing on manual memory management, pointer arithmetic, and custom data structures. This project demonstrates core low-level programming concepts without relying on the Standard Template Library (STL) containers like `std::vector`.
 
